@@ -1,1 +1,2 @@
-Write-Host "Hello Scripting World :-)" -BackgroundColor DarkGray -ForegroundColor Yellow
+Write-Host "Hello Scripting World :-)" -BackgroundColor DarkYellow
+Write-Host "-------------------------" -ForegroundColor Red

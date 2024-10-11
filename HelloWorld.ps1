@@ -1,0 +1,1 @@
+Write-Host "Hello Scripting World :-)" -BackgroundColor DarkGray -ForegroundColor Yellow

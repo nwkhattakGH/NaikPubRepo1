@@ -1,5 +1,5 @@
 ﻿# Define List A and List B
-$listA = @("item1", "item5", "item3", "item4")
+$listA = @("item1", "item2", "item3", "item4")
 $listB = @("item3", "item2")
 
 # Function to check if all items in List B exist in List A

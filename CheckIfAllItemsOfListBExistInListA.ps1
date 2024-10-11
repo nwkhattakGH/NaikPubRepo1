@@ -21,7 +21,7 @@ $result = Check-AllItemsExist -listA $listA -listB $listB
 
 # Output the result
 if ($result) {
-    Write-Output "All items from List B exist in List A."
+    Write-Host "All items from List B exist in List A." -ForegroundColor Green
 } else {
-    Write-Output "Not all items from List B exist in List A."
+    Write-Host "Not all items from List B exist in List A." -ForegroundColor Yellow
 }

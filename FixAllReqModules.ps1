@@ -85,7 +85,7 @@ if ($checkPnPModule) {
         Install-Module -Name $installPnPModule -RequiredVersion $PnPReqVersion -AllowClobber -Force
         Write-Output "$installPnPModule version $PnPReqVersion has been installed."
     } else {
-        Write-Output "$installPnPModulel version $PnPReqVersion is already installed."
+        Write-Output "$installPnPModule version $PnPReqVersion is already installed."
     }
 
     if ($PnPVersionsToUninstall.Count -gt 0) {
@@ -107,7 +107,7 @@ if ($checkPnPModule) {
 $GraphPSReqModules = @("Microsoft.Graph.Authentication", "Microsoft.Graph.Calendar", "Microsoft.Graph.DirectoryObjects", "Microsoft.Graph.Groups", "Microsoft.Graph.Users", "Microsoft.Graph.Users.Actions")
 
 # Check for installed Microsoft Graph modules
-$GraphPSModules = Get-Module -ListAvailable Microsoft.Graph.* | Sort-Object Version -Descending
+$GraphPSModules = Get-Module -ListAvailable Microsoft.Grap* | Sort-Object Version -Descending
 $GraphPSReqVersion = [version]"2.8.0"
 
 if (!$GraphPSModules) {
@@ -118,12 +118,20 @@ if (!$GraphPSModules) {
 }
 
 if ($GraphPSModules) {
+
+    foreach ($GraphPSModule in $GraphPSModules) {
+    if (Get-Module -ListAvailable $GraphPSModule.name | Where-Object version -eq $GraphPSModule.version | Select-Object -ExpandProperty RequiredModules | where {$_.Name -ne "Microsoft.Graph.Authentication"}) {
+        Write-Host "Removing Dependednt Module $($GraphPSModule.Name) $($GraphPSModule.Version)" -ForegroundColor Cyan
+        Uninstall-Module $GraphPSModule.Name -RequiredVersion $GraphPSModule.Version -Force
+        }
+    }
+
     foreach ($GraphPSModule in $GraphPSModules) {
         if ($GraphPSModule -notin $GraphPSReqModules) {
             Write-Host "Removing not required module $($GraphPSModule.name) version $($GraphPSModule.version)" -ForegroundColor Cyan
-            Uninstall-Module $GraphPSModule.name -RequiredVersion $GraphPSModule.version
+            Uninstall-Module $GraphPSModule.name -RequiredVersion $GraphPSModule.version -Force
             }
-        }
+          }    
     }
 
 if ($GraphPSModules[0].Version -lt $GraphPSReqVersion) {

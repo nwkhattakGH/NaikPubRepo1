@@ -2,7 +2,8 @@ $DesktopPath = [System.Environment]::GetFolderPath('Desktop')
 $InstallAzModules = @("Az.Accounts","Az.KeyVault","Az.Resources")
 $installEXOhModule = "ExchangeOnlineManagement"
 $InstallTeamsModule = "MicrosoftTeams"
-$InstallGraphPSModules = @("Microsoft.Graph.Authentication","Microsoft.Graph.Calendar","Microsoft.Graph.DirectoryObjects","Microsoft.Graph.Groups","Microsoft.Graph.Users","Microsoft.Graph.Users.Actions")
+# List of required Microsoft Graph modules
+$GraphPSReqModules = @("Microsoft.Graph.Authentication", "Microsoft.Graph.Calendar", "Microsoft.Graph.DirectoryObjects", "Microsoft.Graph.Groups", "Microsoft.Graph.Users", "Microsoft.Graph.Users.Actions")
 $installPnPModule = "PnP.PowerShell"
 $ExchangeReqVersion = [version]"3.4.0"
 $PnPReqVersion = [version]"1.12.0"
@@ -103,9 +104,6 @@ if ($checkPnPModule) {
 }
 
 #Graph Part
-# List of required Microsoft Graph modules
-$GraphPSReqModules = @("Microsoft.Graph.Authentication", "Microsoft.Graph.Calendar", "Microsoft.Graph.DirectoryObjects", "Microsoft.Graph.Groups", "Microsoft.Graph.Users", "Microsoft.Graph.Users.Actions")
-
 # Check for installed Microsoft Graph modules
 $GraphPSModules = Get-Module -ListAvailable Microsoft.Grap* | Sort-Object Version -Descending
 $GraphPSReqVersion = [version]"2.8.0"

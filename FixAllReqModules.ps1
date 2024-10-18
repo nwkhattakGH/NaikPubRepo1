@@ -3,7 +3,7 @@ $InstallAzModules = @("Az.Accounts","Az.KeyVault","Az.Resources")
 $installEXOhModule = "ExchangeOnlineManagement"
 $InstallTeamsModule = "MicrosoftTeams"
 # List of required Microsoft Graph modules
-$GraphPSReqModules = @("Microsoft.Graph.Authentication", "Microsoft.Graph.Calendar", "Microsoft.Graph.DirectoryObjects", "Microsoft.Graph.Groups", "Microsoft.Graph.Users", "Microsoft.Graph.Users.Actions")
+$GraphPSReqModules = @("Microsoft.Graph.Authentication", "Microsoft.Graph.Identity.DirectoryManagement", "Microsoft.Graph.Calendar", "Microsoft.Graph.DirectoryObjects", "Microsoft.Graph.Groups", "Microsoft.Graph.Users", "Microsoft.Graph.Users.Actions")
 $installPnPModule = "PnP.PowerShell"
 $ExchangeReqVersion = [version]"3.4.0"
 $PnPReqVersion = [version]"1.12.0"

@@ -16,7 +16,8 @@ function Get-MatchingItems {
 }
 
 # Example usage
-$list1 = @("user1@domain.onmicrosoft.com", "user2@domain.onmicrosoft.com", "user3@domain.onmicrosoft.com","user4@domain.onmicrosoft.com")
+$EngineerEmails = @("user1@domain.onmicrosoft.com", "user2@domain.onmicrosoft.com", "user3@domain.onmicrosoft.com","user4@domain.onmicrosoft.com")
+$list1 = $EngineerEmails
 $list2 = @("user2@domain.onmicrosoft.com", "user4@domain.onmicrosoft.com")
 
 $matchingResults = Get-MatchingItems -List1 $list1 -List2 $list2
